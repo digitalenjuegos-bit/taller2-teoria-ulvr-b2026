@@ -553,9 +553,10 @@ function fbWrite(p,val,method){
 
 /* ---------- P1 → P2 ---------- */
 $("bEmpezar").onclick=function(){
-  // Force show section v2 directly
-  var v2=$("v2"); if(v2){v2.classList.remove("oculto");v2.style.display="block";}
-  mostrar("v2");
+  // Forzar mostrar sección v2 directamente y evitar la función mostrar()
+  // que agrega "oculto" a todas las secciones primero
+  var v2=document.getElementById("v2");
+  if(v2){v2.classList.remove("oculto");v2.style.display="block";window.scrollTo(0,0);}
   pintarParalelos();
 };
 
