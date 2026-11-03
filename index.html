@@ -552,7 +552,12 @@ function fbWrite(p,val,method){
 }
 
 /* ---------- P1 → P2 ---------- */
-$("bEmpezar").onclick=function(){mostrar("v2");pintarParalelos();};
+$("bEmpezar").onclick=function(){
+  // Force show section v2 directly
+  var v2=$("v2"); if(v2){v2.classList.remove("oculto");v2.style.display="block";}
+  mostrar("v2");
+  pintarParalelos();
+};
 
 function pintarParalelos(){
   var c=$("paralelos"); c.innerHTML="";
