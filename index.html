@@ -373,6 +373,7 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
 </footer>
 </div>
 
+<!-- Datos de estudiantes cargados desde JSON externo -->
 <script id="datos-estudiantes" type="application/json">{
  "Teoría de la Adm (Comercio Ext)": [
   "ANGULO VARGAS KARLA DARLEN",
@@ -564,13 +565,24 @@ function pintarParalelos(){
       Array.prototype.forEach.call(c.children,function(x){x.classList.remove("on");});
       b.classList.add("on");
       $("bloqueNombre").classList.remove("oculto");
-      $("buscarNombre").value=""; $("selNombre").innerHTML="<option value=''>Escribe tus apellidos arriba</option>";
-      $("buscarNombre").focus();
+      // Poblar el dropdown INMEDIATAMENTE con todos los nombres de esta carrera
+      var lista=EST[p]||[], sel=$("selNombre");
+      sel.innerHTML=lista.map(function(n){return "<option value='"+esc(n)+"'>"+esc(n)+"</option>";}).join("");
+      // Ocultar el input de búsqueda y mostrar solo el dropdown
+      $("buscarNombre").style.display="none";
+      $("buscarNombre").value="";
+      $("label[for='buscarNombre']").style.display="none";
+      // Mostrar instrucción alternativa
+      $("selNombre").style.display="block";
+      $("selNombre").size=8; // Force dropdown visible
+      // Focus en el dropdown para que el alumno pueda empezar a seleccionar
+      $("selNombre").focus();
     };
     c.appendChild(b);
   });
 }
 $("buscarNombre").oninput=function(){
+  // Si el input sigue visible (modo retrocompatibilidad), mantener filtro
   var q=slug(this.value), lista=EST[S.paralelo]||[], sel=$("selNombre");
   if(q.length<3){sel.innerHTML="<option value=''>Escribe al menos tres letras</option>";return;}
   var hits=lista.filter(function(n){return slug(n).indexOf(q)>-1;});
@@ -584,6 +596,10 @@ $("bNombre").onclick=function(){
   $("quienSoy").textContent=v+" — "+S.paralelo;
   mostrar("v3"); cargarGrupos();
 };
+// Asegurar que el dropdown sea visible al cargar si ya hay un paralelo seleccionado
+document.addEventListener("DOMContentLoaded",function(){
+  if(S.paralelo && $("selNombre").style.display==="none"){$("buscarNombre").style.display="block";$("label[for='buscarNombre']").style.display="inline";}
+});
 $("bVolver1").onclick=function(){mostrar("v2");};
 $("bVolver2").onclick=function(){mostrar("v2");};
 
@@ -930,6 +946,8 @@ function marcarNiveles(){
 function total(){
   var t=(GC.c1||0)+(GC.c2||0)+(GC.c3||0)+(GC.c4||0);
   $("totalNota").textContent=dos(t);
+  return t;
+}
   return t;
 }
 document.addEventListener("keydown",function(e){
