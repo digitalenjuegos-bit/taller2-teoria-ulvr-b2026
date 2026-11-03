@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Taller #2 · Teoría de la Administración · ULVR B-2026</title>
+<title>Taller #2 · Minicasos gerenciales · ULVR B-2026</style>
+<meta name="description" content="Taller individual de diagnóstico gerencial - Teoría de la Administración">
 <style>
 :root{
   --bg:#f7f6f3; --ink:#1c1c1c; --wine:#7a1f2b; --steel:#2f4a5a;
@@ -29,7 +30,8 @@ small,.small{font-size:14.5px}
 .btn.sec{background:#fff;color:var(--wine)}
 .btn.sec:hover{background:#fbf7f6}
 .btn.ghost{background:#fff;color:var(--steel);border-color:var(--line)}
-.btn.sm{padding:8px 13px;font-size:15px}
+.btn.ghost:hover{background:#fbf7f6}
+.btn.ghost.sm{padding:8px 13px;font-size:15px}
 .btn.danger{background:#fff;color:#8a1c1c;border-color:#c9a3a3}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .grid{display:grid;gap:12px;grid-template-columns:1fr 1fr}
@@ -66,7 +68,6 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
 .niv.sel{border-color:var(--wine);border-width:2px;background:#fbf3f3}
 .desc{font-size:14.5px;color:#4c4943;margin-top:7px;min-height:20px}
 .total{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px;font-weight:700}
-.total .num{font-size:28px;font-variant-numeric:tabular-nums}
 .timer{font-family:ui-monospace,Menlo,monospace;font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
 .timer.alerta{color:#8a1c1c}
 .aviso{border:1px solid #e0cfae;background:#fdf8ef;padding:12px 14px;border-radius:4px;font-size:15px}
@@ -78,12 +79,6 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
 .chip{display:inline-block;background:var(--soft);border-radius:3px;padding:2px 7px;font-size:13.5px;margin:0 4px 4px 0}
 .check{display:flex;gap:9px;align-items:flex-start;margin:0 0 8px;font-size:15.5px}
 .check input{margin-top:4px;width:18px;height:18px}
-.entrega{border-left:3px solid var(--steel);padding-left:14px;margin:0 0 16px}
-.entrega dt{font-size:13.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--steel);margin-top:10px}
-.entrega dd{margin:2px 0 0}
-.pasos{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.paso{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:99px;color:#6d6a63;background:#fff}
-.paso.on{border-color:var(--wine);color:var(--wine);font-weight:600}
 @media print{.noprint{display:none !important}body{background:#fff}.card{border:none;padding:0}}
 </style>
 </head>
@@ -97,31 +92,26 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
 <!-- ============ P1 PORTADA ============ -->
 <section id="v1">
   <h1>Taller #2<br>Minicasos gerenciales</h1>
-  <p class="small" style="color:#5d5a54">Proceso administrativo y estilos gerenciales · Trabajo en grupos de 3 o 4 integrantes</p>
+  <p class="small" style="color:#5d5a54">Proceso administrativo y estilos gerenciales · Trabajo individual · 74 estudiantes · 4 casos</p>
   <div class="rule"></div>
   <div class="card">
     <h3>Antes de empezar</h3>
-    <p>Vas a analizar un caso de decisión gerencial. El trabajo se hace en grupo, se entrega desde esta aplicación y se defiende oralmente en clase.</p>
+    <p>Vas a analizar un caso de decisión gerencial. El trabajo es individual, se entrega desde esta aplicación y se defiende oralmente en clase.</p>
     <p class="ayuda">Elige tu nombre de la lista de tu carrera. Si tu nombre no aparece, avisa al docente antes de continuar.</p>
     <div style="margin-top:16px"><button class="btn" id="bEmpezar">Iniciar el taller</button></div>
   </div>
 </section>
 
-<!-- ============ P2 PARALELO Y NOMBRE ============ -->
+<!-- ============ P2 NOMBRE ============ -->
 <section id="v2" class="oculto">
-  <div class="pasos"><span class="paso on">1 Identificación</span><span class="paso">2 Grupo</span><span class="paso">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso">5 Entrega</span></div>
+  <div class="pasos"><span class="paso on">1 Identificación</span><span class="paso">2 Caso</span><span class="paso">3 Respuestas</span><span class="paso">4 Entrega</span></div>
   <h2>¿A qué carrera perteneces?</h2>
   <div class="row" id="paralelos" style="margin-bottom:18px"></div>
 
   <div id="bloqueNombre" class="oculto card">
     <div class="campo">
-      <label for="buscarNombre">Busca tu nombre</label>
-      <input type="text" id="buscarNombre" placeholder="Escribe tus apellidos">
-      <p class="ayuda">Escribe al menos tres letras para filtrar la lista.</p>
-    </div>
-    <div class="campo">
       <label for="selNombre">Selecciona tu nombre</label>
-      <select id="selNombre" size="8"><option value="">Primero escribe tus apellidos</option></select>
+      <select id="selNombre" size="8"><option value="">Carrera seleccionada arriba</option></select>
       <p class="err" id="errNombre">Selecciona tu nombre de la lista.</p>
     </div>
     <div class="row">
@@ -131,43 +121,23 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
   </div>
 </section>
 
-<!-- ============ P3 GRUPO ============ -->
+<!-- ============ P3 CASO ============ -->
 <section id="v3" class="oculto">
-  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso on">2 Grupo</span><span class="paso">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso">5 Entrega</span></div>
-  <h2>Tu grupo</h2>
+  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Nombre</span><span class="paso on">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso">5 Entrega</span></div>
+  <h2>Taller individual</h2>
   <p class="small">Estás registrado como <b id="quienSoy"></b>.</p>
   <div class="card">
-    <h3>Crear un grupo</h3>
-    <p class="ayuda">Crea el grupo solo si eres el primero de tu equipo en entrar. Anota el número de grupo que uses en clase.</p>
-    <div class="campo" style="margin-top:12px">
-      <label for="nomGrupo">Número o nombre del grupo</label>
-      <input type="text" id="nomGrupo" maxlength="30" placeholder="Ejemplo: Grupo 3">
-      <p class="err" id="errGrupo">Escribe el número o nombre del grupo.</p>
-    </div>
-    <button class="btn" id="bCrear">Crear grupo</button>
+    <h3>Caso asignado</h3>
+    <p>Elige el caso que se te asignó.</p>
+    <div id="casos" class="grid" style="grid-template-columns:1fr"></div>
+    <p class="aviso" id="casoFijado" style="display:none"></p>
+    <div class="row" style="margin-top:14px"><button class="btn" id="bCaso">Continuar</button></div>
   </div>
-  <div class="card">
-    <h3>Unirme a un grupo ya creado</h3>
-    <p class="ayuda" id="txtListaGrupos">Cargando grupos de tu carrera…</p>
-    <div id="listaGrupos"></div>
-    <button class="btn ghost sm" id="bRefrescarGrupos">Actualizar lista</button>
-  </div>
-  <div class="row"><button class="btn ghost sm" id="bVolver2">Cambiar de nombre</button></div>
 </section>
 
-<!-- ============ P4 CASO ============ -->
+<!-- ============ P4 FORMULARIO ============ -->
 <section id="v4" class="oculto">
-  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Grupo</span><span class="paso on">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso">5 Entrega</span></div>
-  <h2>Caso asignado</h2>
-  <p class="small">Grupo <b id="verGrupo"></b>. Elige el caso que el docente asignó a tu grupo.</p>
-  <div id="casos" class="grid" style="grid-template-columns:1fr"></div>
-  <p class="aviso" id="casoFijado" style="display:none"></p>
-  <div class="row" style="margin-top:14px"><button class="btn" id="bCaso">Continuar</button></div>
-</section>
-
-<!-- ============ P5 FORMULARIO ============ -->
-<section id="v5" class="oculto">
-  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Grupo</span><span class="paso">3 Caso</span><span class="paso on">4 Respuestas</span><span class="paso">5 Entrega</span></div>
+  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Nombre</span><span class="paso">3 Caso</span><span class="paso on">4 Respuestas</span><span class="paso">5 Entrega</span></div>
   <div id="encabezadoCaso"></div>
 
   <div class="card">
@@ -239,9 +209,9 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
   </div>
 </section>
 
-<!-- ============ P6 REVISIÓN ============ -->
-<section id="v6" class="oculto">
-  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Grupo</span><span class="paso">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso on">5 Entrega</span></div>
+<!-- ============ P5 REVISIÓN ============ -->
+<section id="v5" class="oculto">
+  <div class="pasos"><span class="paso">1 Identificación</span><span class="paso">2 Nombre</span><span class="paso">3 Caso</span><span class="paso">4 Respuestas</span><span class="paso on">5 Entrega</span></div>
   <h2>Revisa antes de enviar</h2>
   <div id="resumen" class="card"></div>
   <div id="avisoEnvio"></div>
@@ -251,7 +221,7 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
   </div>
 </section>
 
-<!-- ============ P7 LISTO ============ -->
+<!-- ============ P6 LISTO ============ -->
 <section id="v7" class="oculto">
   <h2 id="tituloFin">Entrega registrada</h2>
   <div class="card" id="cajaFin"></div>
@@ -301,16 +271,8 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
         <div id="proyTexto" class="caso" style="margin-top:14px"></div>
         <div class="row" style="justify-content:space-between;align-items:flex-end;margin-top:10px">
           <div>
-            <div class="small" id="proyFase">Fase 1 de 2 · Trabajo en grupo</div>
+            <div class="small" id="proyFase">Fase 1 de 2 · Trabajo individual</div>
             <div class="timer" id="proyTimer" aria-live="polite">08:00</div>
-            <select id="proyDuracion" class="pill" style="margin-left:8px">
-              <option value="off">OFF</option>
-              <option value="10">10S</option>
-              <option value="30">30S</option>
-              <option value="45">45S</option>
-              <option value="60">60S</option>
-              <option value="75">75S</option>
-            </select>
           </div>
           <div class="row">
             <button class="btn sec sm" id="bIniciar">Iniciar</button>
@@ -370,91 +332,89 @@ input:focus,select:focus,textarea:focus,button:focus{outline:3px solid #c9a86a;o
 <footer class="pie noprint">
   <span>Mgtr. Alberto José Ottati Rosas · Teoría de la Administración</span>
   <span><span id="estadoRed" class="chip">Sin conexión</span><a href="?docente=1" id="linkDoc">Acceso docente</a></span>
-</footer>
 </div>
 
-<!-- Datos de estudiantes cargados desde JSON externo -->
 <script id="datos-estudiantes" type="application/json">{
  "Teoría de la Adm (Comercio Ext)": [
-  "ANGULO VARGAS KARLA DARLEN",
-  "BALAREZO ENGRACIA EMANUEL JOSUE",
-  "BOLAÑOS CARRIEL KLAYTHER De Dier",
-  "BRIONES PINCAY ALEJANDRA NATASHA",
-  "ESCOBAR BRIONES DANIELA XIMENA",
-  "FARIÑO TORRES VALESKA JAMILETH",
-  "GARCIA CRUZ ARIANA MARTHA",
-  "GUERRERO ORTIZ LADY JOHANNA",
-  "INDACOCHEA TUBAY JOSUE ADRIAN",
-  "INTRIAGO PEÑA MICHAEL JAVIER",
-  "MAGALLANES SOTO JORGE ELKIN",
-  "MARIN RAMIREZ ARIANNA CAROLINA",
-  "MAURY BURGOS ALEJANDRO RAFAEL",
-  "MENDEZ BAJAÑA VALERIA NICOLE",
-  "MONCAYO RAMÍREZ ARIANA SCARLETT",
-  "MORALES BRIONES DYLAN NICOLAS",
-  "NARANJO VERA DANIELLA SOPHIA",
-  "NOBOA RONQUILLO ENRIQUE SEBASTIAN",
-  "ORTEGA MUÑOZ JOSELYN ELISA",
-  "PALLARES CHANCAY SEBASTIÁN BRANDON",
-  "POMBOSA LÓPEZ SURY VANESSA",
-  "REYES ORELLANA KARLA MAILYN",
-  "SEGURA MOSQUERA KRISTEL MILENA",
-  "SORIA RIVERA MATEO LIUU",
-  "TINOCO FERNANDEZ BRIGGITH YOSABETH",
-  "TORRES OLVERA DOMENICA MARITZA",
-  "TRIANA MORALES JUSTIN ARIEL",
-  "VERA LÓPEZ ASHLEY ALANIS",
-  "VERA ZAMORA NATHALY ESTHER"
- ],
+   "ANGULO VARGAS KARLA DARLEN",
+   "BALAREZO ENGRACIA EMANUEL JOSUE",
+   "BOLAÑOS CARRIEL KLAYTHER De Dier",
+   "BRIONES PINCAY ALEJANDRA NATASHA",
+   "ESCOBAR BRIONES DANIELA XIMENA",
+   "FARIÑO TORRES VALESKA JAMILETH",
+   "GARCIA CRUZ ARIANA MARTHA",
+   "GUERRERO ORTIZ LADY JOHANNA",
+   "INDACOCHEA TUBAY JOSUE ADRIAN",
+   "INTRIAGO PEÑA MICHAEL JAVIER",
+   "MAGALLANES SOTO JORGE ELKIN",
+   "MARIN RAMIREZ ARIANNA CAROLINA",
+   "MAURY BURGOS ALEJANDRO RAFAEL",
+   "MENDEZ BAJAÑA VALERIA NICOLE",
+   "MONCAYO RAMÍREZ ARIANA SCARLETT",
+   "MORALES BRIONES DYLAN NICOLAS",
+   "NARANJO VERA DANIELLA SOPHIA",
+   "NOBOA RONQUILLO ENRIQUE SEBASTIAN",
+   "ORTEGA MUÑOZ JOSELYN ELISA",
+   "PALLARES CHANCAY SEBASTIÁN BRANDON",
+   "POMBOSA LÓPEZ SURY VANESSA",
+   "REYES ORELLANA KARLA MAILYN",
+   "SEGURA MOSQUERA KRISTEL MILENA",
+   "SORIA RIVERA MATEO LIUU",
+   "TINOCO FERNANDEZ BRIGGITH YOSABETH",
+   "TORRES OLVERA DOMENICA MARITZA",
+   "TRIANA MORALES JUSTIN ARIEL",
+   "VERA LÓPEZ ASHLEY ALANIS",
+   "VERA ZAMORA NATHALY ESTHER"
+  ],
  "Teoría de la Adm (Contabilidad)": [
-  "ABAD DELGADO ARLETT ELIANA",
-  "ALMEIDA TORRES LADY JANINE",
-  "ANGEL TAPIA ALEJANDRA MADELINE",
-  "ANTEPARA CASTRO CINDY MICHELLE",
-  "BERMUDES MORANTE MELANIE NATASHA",
-  "CASTRO AVILES DANNA ABIGAIL",
-  "GARCÍA ASPIAZU KARLA MELISSA",
-  "ILVIS QUISHPI EMILY VALENTINA",
-  "LOPEZ GONZALEZ MANUEL NAHUM",
-  "MACIAS GORDON ELIZABETH FERNANDA",
-  "MIRANDA MEDINA BRITNEY ALHYN",
-  "MORALES BRIONES NATHALY NOHEMI",
-  "MOSQUERA MORAN FRANKLIN ANDRES",
-  "PINARGOTE PINARGOTE GUIDO ANTHONY",
-  "POVEDA SOLIS LUIS DAVID",
-  "QUIMIS RODRIGUEZ AILEEN IVETT",
-  "RICAURTE VELEZ KAREN LUCIA",
-  "RIZO ANDRADE DANIELA VALENTINA",
-  "SALAZAR RIZO MATT ANDREW",
-  "VARGAS GARCIA DARLA VALESKA",
-  "VERA LOPEZ ASHLEY JOHANNA",
-  "VITE FERRIN LILYAM MARVEL"
- ],
+   "ABAD DELGADO ARLETT ELIANA",
+   "ALMEIDA TORRES LADY JANINE",
+   "ANGEL TAPIA ALEJANDRA MADELINE",
+   "ANTEPARA CASTRO CINDY MICHELLE",
+   "BERMUDES MORANTE MELANIE NATASHA",
+   "CASTRO AVILES DANNA ABIGAIL",
+   "GARCÍA ASPIAZU KARLA MELISSA",
+   "ILVIS QUISHPI EMILY VALENTINA",
+   "LOPEZ GONZALEZ MANUEL NAHUM",
+   "MACIAS GORDON ELIZABETH FERNANDA",
+   "MIRANDA MEDINA BRITNEY ALHYN",
+   "MORALES BRIONES NATHALY NOHEMI",
+   "MOSQUERA MORAN FRANKLIN ANDRES",
+   "PINARGOTE PINARGOTE GUIDO ANTHONY",
+   "POVEDA SOLIS LUIS DAVID",
+   "QUIMIS RODRIGUEZ AILEEN IVETT",
+   "RICAURTE VELEZ KAREN LUCIA",
+   "RIZO ANDRADE DANIELA VALENTINA",
+   "SALAZAR RIZO MATT ANDREW",
+   "VARGAS GARCIA DARLA VALESKA",
+   "VERA LOPEZ ASHLEY JOHANNA",
+   "VITE FERRIN LILYAM MARVEL"
+  ],
  "Teoría de la Adm. (Marketing)": [
-  "ALVARADO SUAREZ GENESIS HAYDE",
-  "BAUTISTA PILAMUNGA JOSSELIN BELINDA",
-  "BAZURTO ZAMBRANO JANELA STEFANIA",
-  "CEVALLOS HOLGUIN KENIA SKARLETH",
-  "CHERREZ CUESTAS RAUL ALEXIS",
-  "CUEVA COPPIANO FERNANDO JOSE",
-  "GARCÍA MERELO DAVIS OSMANI",
-  "GUERRERO BELTRAN TATIANA ROSSMARY",
-  "GUERRERO LEÓN ADAMARIS MICHELLE",
-  "HAESLI AGUIRRE NATALIA GRACE",
-  "LINO QUIMIS MELANY ROSA",
-  "MARCILLO GALARZA ISAAC PHILIPPE",
-  "MARTINEZ ALVARADO DAGNA JENNEDYD",
-  "ORDOÑEZ MARQUEZ NOEMI SCARLETTE",
-  "PANTA AVELINO ASHLEY ANALIA",
-  "REYES LACA AMELIA LEOVANA",
-  "RIVAS SOTOMAYOR PIERRE ANTONIO",
-  "RODAS CARPIO PAULINA KATHERINE",
-  "RODRIGUEZ MARCILLO FIORELLA DOMENICA",
-  "SUAREZ CANO JULY ROMINA",
-  "TOURIZ ALAY GENESIS IVANNA",
-  "VILLAMAR PEREZ DIEGO ALEJANDRO",
-  "YEPEZ GUTIERREZ JUAN DAVID"
- ]
+   "ALVARADO SUAREZ GENESIS HAYDE",
+   "BAUTISTA PILAMUNGA JOSSELIN BELINDA",
+   "BAZURTO ZAMBRANO JANELA STEFANIA",
+   "CEVALLOS HOLGUIN KENIA SKARLETH",
+   "CHERREZ CUESTAS RAUL ALEXIS",
+   "CUEVA COPPIANO FERNANDO JOSE",
+   "GARCÍA MERELO DAVIS OSMANI",
+   "GUERRERO BELTRAN TATIANA ROSSMARY",
+   "GUERRERO LEÓN ADAMARIS MICHELLE",
+   "HAESLI AGUIRRE NATALIA GRACE",
+   "LINO QUIMIS MELANY ROSA",
+   "MARCILLO GALARZA ISAAC PHILIPPE",
+   "MARTINEZ ALVARADO DAGNA JENNEDYD",
+   "ORDOÑEZ MARQUEZ NOEMI SCARLETTE",
+   "PANTA AVELINO ASHLEY ANALIA",
+   "REYES LACA AMELIA LEOVANA",
+   "RIVAS SOTOMAYOR PIERRE ANTONIO",
+   "RODAS CARPIO PAULINA KATHERINE",
+   "RODRIGUEZ MARCILLO FIORELLA DOMENICA",
+   "SUAREZ CANO JULY ROMINA",
+   "TOURIZ ALAY GENESIS IVANNA",
+   "VILLAMAR PEREZ DIEGO ALEJANDRO",
+   "YEPEZ GUTIERREZ JUAN DAVID"
+  ]
 }</script>
 <script>
 (function(){
@@ -511,24 +471,23 @@ var CRIT = [
     "Claridad, manejo del tiempo y respuesta con argumento propio."]}
 ];
 var LS = "t2teoria_b2026";
-var S = {paralelo:"",nombre:"",grupoId:"",grupo:null,respuestas:{},calif:{},guardado:""};
+var S = {paralelo:"",nombre:"",casoId:null,respuestas:{},calif:{},guardado:""};
 
 /* ---------- utilidades ---------- */
 function $(id){return document.getElementById(id);}
-function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&").replace(/</g,"<").replace(/>/g,">").replace(/"/g,""");}
 function slug(s){return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40);}
 function dos(n){return (Math.round(n*100)/100).toFixed(2);}
-function hora(ts){if(!ts) return "";var d=new Date(ts);return d.toLocaleString("es-EC",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});}
 function mostrar(id){
-  ["v1","v2","v3","v4","v5","v6","v7","vp","vd"].forEach(function(v){var e=$(v);if(e)e.classList.add("oculto");});
-  if(id){var e=$(id);if(e)e.classList.remove("oculto");}
+  ["v1","v2","v3","v4","v5","v6","v7","vp","vd"].forEach(function(v){$(v).classList.add("oculto");});
+  if(id) $(id).classList.remove("oculto");
   window.scrollTo(0,0);
 }
 function guardarLocal(){
-  try{localStorage.setItem(LS,JSON.stringify({paralelo:S.paralelo,nombre:S.nombre,grupoId:S.grupoId,respuestas:S.respuestas}));}catch(e){}
+  try{localStorage.setItem(LS,JSON.stringify({paralelo:S.paralelo,nombre:S.nombre,casoId:S.casoId,respuestas:S.respuestas}));}catch(e){}
 }
 function leerLocal(){
-  try{var r=localStorage.getItem(LS);if(r){var o=JSON.parse(r);S.paralelo=o.paralelo||"";S.nombre=o.nombre||"";S.grupoId=o.grupoId||"";S.respuestas=o.respuestas||{};}}catch(e){}
+  try{var r=localStorage.getItem(LS);if(r){var o=JSON.parse(r);S.paralelo=o.paralelo||"";S.nombre=o.nombre||"";S.casoId=o.casoId||"";S.respuestas=o.respuestas||{}};}catch(e){}
 }
 
 /* ---------- Firebase REST ---------- */
@@ -552,14 +511,9 @@ function fbWrite(p,val,method){
 }
 
 /* ---------- P1 → P2 ---------- */
-$("bEmpezar").onclick=function(){
-  // Forzar mostrar sección v2 directamente y evitar la función mostrar()
-  // que agrega "oculto" a todas las secciones primero
-  var v2=document.getElementById("v2");
-  if(v2){v2.classList.remove("oculto");v2.style.display="block";window.scrollTo(0,0);}
-  pintarParalelos();
-};
+$("bEmpezar").onclick=function(){mostrar("v2");pintarParalelos();};
 
+/* ---------- pintar paralelos ---------- */
 function pintarParalelos(){
   var c=$("paralelos"); c.innerHTML="";
   PARALELOS.forEach(function(p){
@@ -571,24 +525,20 @@ function pintarParalelos(){
       Array.prototype.forEach.call(c.children,function(x){x.classList.remove("on");});
       b.classList.add("on");
       $("bloqueNombre").classList.remove("oculto");
-      // Poblar el dropdown INMEDIATAMENTE con todos los nombres de esta carrera
+      // Poblar dropdown INMEDIATAMENTE con todos los nombres de esta carrera
       var lista=EST[p]||[], sel=$("selNombre");
       sel.innerHTML=lista.map(function(n){return "<option value='"+esc(n)+"'>"+esc(n)+"</option>";}).join("");
-      // Ocultar el input de búsqueda y mostrar solo el dropdown
+      // Ocultar instrucción y mostrar dropdown
       $("buscarNombre").style.display="none";
-      $("buscarNombre").value="";
       $("label[for='buscarNombre']").style.display="none";
-      // Mostrar instrucción alternativa
       $("selNombre").style.display="block";
-      $("selNombre").size=8; // Force dropdown visible
-      // Focus en el dropdown para que el alumno pueda empezar a seleccionar
+      $("selNombre").size=8;
       $("selNombre").focus();
     };
     c.appendChild(b);
   });
 }
 $("buscarNombre").oninput=function(){
-  // Si el input sigue visible (modo retrocompatibilidad), mantener filtro
   var q=slug(this.value), lista=EST[S.paralelo]||[], sel=$("selNombre");
   if(q.length<3){sel.innerHTML="<option value=''>Escribe al menos tres letras</option>";return;}
   var hits=lista.filter(function(n){return slug(n).indexOf(q)>-1;});
@@ -600,120 +550,46 @@ $("bNombre").onclick=function(){
   $("errNombre").style.display="none";
   S.nombre=v; guardarLocal();
   $("quienSoy").textContent=v+" — "+S.paralelo;
-  mostrar("v3"); cargarGrupos();
-};
-// Asegurar que el dropdown sea visible al cargar si ya hay un paralelo seleccionado
-document.addEventListener("DOMContentLoaded",function(){
-  if(S.paralelo && $("selNombre").style.display==="none"){$("buscarNombre").style.display="block";$("label[for='buscarNombre']").style.display="inline";}
-});
-$("bVolver1").onclick=function(){mostrar("v2");};
-$("bVolver2").onclick=function(){mostrar("v2");};
-
-/* ---------- grupos ---------- */
-function cargarGrupos(){
-  var cont=$("listaGrupos"); cont.innerHTML="";
-  $("txtListaGrupos").textContent="Cargando grupos de tu carrera…";
-  fbGet("entregas").then(function(data){
-    var arr=[]; for(var k in (data||{})){var g=data[k]; if(g && g.paralelo===S.paralelo) arr.push({id:k,g:g});}
-    arr.sort(function(a,b){return (a.g.nombreGrupo||"").localeCompare(b.g.nombreGrupo||"");});
-    if(!arr.length){$("txtListaGrupos").textContent="Todavía no hay grupos en tu carrera. Crea el tuyo.";return;}
-    $("txtListaGrupos").textContent="Grupos abiertos de tu carrera:";
-    arr.forEach(function(o){
-      var n=Object.keys(o.g.integrantes||{}).length;
-      var b=document.createElement("button");
-      b.type="button"; b.className="btn ghost sm"; b.style.margin="0 8px 8px 0";
-      b.textContent=o.g.nombreGrupo+" · "+n+(n===1?" integrante":" integrantes")+(o.g.caso?" · Caso "+o.g.caso:" · sin caso");
-      b.onclick=function(){unirse(o.id,o.g);};
-      cont.appendChild(b);
-    });
-  }).catch(function(){
-    $("txtListaGrupos").textContent="No se pudo cargar la lista. Revisa la conexión e intenta de nuevo.";
-  });
-}
-$("bRefrescarGrupos").onclick=cargarGrupos;
-
-$("bCrear").onclick=function(){
-  var nombre=$("nomGrupo").value.trim();
-  if(!nombre){$("errGrupo").style.display="block";return;}
-  $("errGrupo").style.display="none";
-  var id=slug(S.paralelo)+"-"+slug(nombre);
-  fbGet("entregas").then(function(data){
-    var ocupado=null;
-    for(var k in (data||{})){
-      var g=data[k]||{};
-      var ints=g.integrantes||{};
-      for(var j in ints){if(ints[j]===S.nombre) ocupado=k;}
-    }
-    if(ocupado){aviso("Ya estás registrado en el grupo "+((data[ocupado]||{}).nombreGrupo||"")+". No puedes estar en dos grupos.",true);return;}
-    var g=data&&data[id];
-    if(g){aviso("Ya existe un grupo con ese nombre en tu carrera. Únete a él o usa otro nombre.",true);return;}
-    var reg={paralelo:S.paralelo,nombreGrupo:nombre,caso:null,integrantes:{},entregadoEn:null};
-    reg.integrantes[slug(S.nombre)+"-"+Math.random().toString(36).slice(2,6)]=S.nombre;
-    return fbWrite("entregas/"+id,reg,"PUT").then(function(){
-      S.grupoId=id; S.grupo=reg; guardarLocal();
-      irACaso();
-    });
-  }).catch(function(){
-    aviso("No hay conexión para crear el grupo. Intentar de nuevo cuando vuelva la red.",true);
-  });
+  mostrar("v3"); cargarCasos();
 };
 
-function unirse(id,g){
-  var ints=g.integrantes||{};
-  for(var j in ints){if(ints[j]===S.nombre){S.grupoId=id;S.grupo=g;guardarLocal();irACaso();return;}}
-  if(g.entregadoEn){aviso("Ese grupo ya entregó el taller. Pide al docente que te agregue.",true);return;}
-  var key=slug(S.nombre)+"-"+Math.random().toString(36).slice(2,6);
-  fbWrite("entregas/"+id+"/integrantes/"+key,S.nombre,"PUT").then(function(){
-    S.grupoId=id; S.grupo=g; S.grupo.integrantes=ints; S.grupo.integrantes[key]=S.nombre;
-    guardarLocal(); irACaso();
-  }).catch(function(){aviso("No se pudo unir al grupo. Revisa la conexión.",true);});
-}
-
-function aviso(txt,malo){
-  var d=document.createElement("div");
-  d.className="aviso"+(malo?" malo":""); d.style.margin="0 0 12px";
-  d.textContent=txt;
-  var host=$("listaGrupos").parentNode;
-  var viejo=host.querySelector(".aviso.dinamico"); if(viejo) viejo.remove();
-  d.classList.add("dinamico"); host.insertBefore(d,host.firstChild);
-}
-
-/* ---------- caso ---------- */
-function irACaso(){
-  $("verGrupo").textContent=(S.grupo&&S.grupo.nombreGrupo)||"";
+/* ---------- cargar casos ---------- */
+function cargarCasos(){
   var cont=$("casos"); cont.innerHTML="";
-  var fijado=S.grupo&&S.grupo.caso?Number(S.grupo.caso):0;
   CASOS.forEach(function(c){
     var b=document.createElement("button");
     b.type="button"; b.className="btn ghost"; b.style.textAlign="left"; b.style.padding="14px";
     b.innerHTML="<b style='font-family:Georgia,serif;font-size:19px'>Caso "+c.n+" · "+esc(c.t)+"</b><br><span class='small' style='color:#4c4943'>"+esc(c.x)+"</span>";
+    var fijado=S.casoId?Number(S.casoId):0;
     if(fijado===c.n){b.classList.add("sec");b.style.borderWidth="2px";b.style.borderColor="#7a1f2b";}
     b.onclick=function(){
       if(fijado){return;}
       Array.prototype.forEach.call(cont.children,function(x){x.classList.remove("sec");x.style.borderWidth="1px";x.style.borderColor="";});
       b.classList.add("sec"); b.style.borderWidth="2px"; b.style.borderColor="#7a1f2b";
-      S.grupo.caso=c.n;
+      S.casoId=c.n;
     };
     cont.appendChild(b);
   });
   var av=$("casoFijado");
-  if(fijado){av.style.display="block";av.textContent="El caso "+fijado+" ya quedó fijado por tu grupo. Si no es el que asignó el docente, avísale.";}
+  if(fijado){av.style.display="block";av.textContent="El caso "+fijado+" ya quedó fijado. Si no es el que asignó el docente, avísale.";}
   else av.style.display="none";
-  mostrar("v4");
+  mostrar("v3");
 }
+
+/* ---------- caso ---------- */
 $("bCaso").onclick=function(){
-  if(!S.grupo||!S.grupo.caso){
+  if(!S.casoId){
     var av=document.createElement("div");
     av.className="aviso malo"; av.textContent="Elige primero el caso asignado a tu grupo.";
     $("casos").parentNode.insertBefore(av,$("casos").nextSibling);
     return;
   }
-  var n=Number(S.grupo.caso);
-  fbWrite("entregas/"+S.grupoId+"/caso",n,"PUT").catch(function(){});
+  fbWrite("entregas/"+slug(S.nombre),{caso:S.casoId,"paralelo":S.paralelo,"nombre":S.nombre,"entregadoEn":null},"PUT").catch(function(){});
+  var n=Number(S.casoId);
   pintarFormulario(n);
-  mostrar("v5");
+  mostrar("v4");
 };
-$("bVolver3").onclick=function(){irACaso();};
+$("bVolver3").onclick=function(){cargarCasos();};
 
 /* ---------- formulario ---------- */
 function pintarFormulario(n){
@@ -742,8 +618,7 @@ function pintarIndicador(host,k){
 }
 function llenarIndicador(host,o){
   var k=host==="ind1"?1:2;
-  $("i"+k+"n").value=o.nombre||""; $("i"+k+"f").value=o.formula||"";
-  $("i"+k+"m").value=o.meta||""; $("i"+k+"r").value=o.frec||"";
+  $("i"+k+"n").value=o.nombre||""; $("i"+k+"f").value=o.formula||""; $("i"+k+"m").value=o.meta||""; $("i"+k+"r").value=o.frec||"";
 }
 $("modelo").onchange=cambiarModelo;
 function cambiarModelo(){
@@ -789,14 +664,13 @@ $("bRevisar").onclick=function(){
     $(f[0]).focus(); $(f[0]).scrollIntoView({block:"center"});
     return;
   }
-  S.respuestas=r; guardarLocal(); pintarResumen(); mostrar("v6");
+  S.respuestas=r; guardarLocal(); pintarResumen(); mostrar("v5");
 };
-
 function pintarResumen(){
-  var r=S.respuestas, c=CASOS.filter(function(x){return x.n===Number(S.grupo.caso);})[0];
+  var r=S.respuestas, c=CASOS.filter(function(x){return x.n===Number(S.casoId);})[0];
   $("resumen").innerHTML=
    "<dl class='entrega'>"+
-   "<dt>Grupo</dt><dd>"+esc(S.grupo.nombreGrupo)+" — "+esc(S.paralelo)+"</dd>"+
+   "<dt>Estudiante</dt><dd>"+esc(S.nombre)+" · "+esc(S.paralelo)+"</dd>"+
    "<dt>Caso</dt><dd>Caso "+c.n+" · "+esc(c.t)+"</dd>"+
    "<dt>Fase débil</dt><dd><b>"+esc(r.fase)+"</b><br>"+esc(r.justFase)+"</dd>"+
    "<dt>Estilo</dt><dd><b>"+esc(r.modelo)+" — "+esc(r.variante)+"</b><br>"+esc(r.justEstilo)+"</dd>"+
@@ -805,25 +679,25 @@ function pintarResumen(){
    "<dt>Ticket de salida</dt><dd>"+esc(r.ticket)+"</dd></dl>";
   $("avisoEnvio").innerHTML="";
 }
-$("bEditar").onclick=function(){mostrar("v5");};
+$("bEditar").onclick=function(){mostrar("v4");};
 
 $("bEnviar").onclick=function(){
   var b=$("bEnviar"); b.disabled=true; b.textContent="Enviando…";
-  var payload={respuestas:S.respuestas,entregadoEn:Date.now(),paralelo:S.paralelo,nombreGrupo:S.grupo.nombreGrupo};
-  fbWrite("entregas/"+S.grupoId,payload,"PATCH").then(function(){
+  var total=(Number(GC&&GC.c1?GC.c1:0)+Number(GC&&GC.c2?GC.c2:0)+Number(GC&&GC.c3?GC.c3:0)+Number(GC&&GC.c4?GC.c4:0));
+  var payload={respuestas:S.respuestas,estudiante:S.nombre,paralelo:S.paralelo,caso:S.casoId,entregadoEn:Date.now(),nota:dos(total)};
+  fbWrite("entregas/"+slug(S.nombre),payload,"PATCH").then(function(){
     b.disabled=false; b.textContent="Enviar al docente";
-    S.grupo.entregadoEn=payload.entregadoEn;
     $("tituloFin").textContent="Entrega registrada";
-    $("cajaFin").innerHTML="<p><b>Grupo "+esc(S.grupo.nombreGrupo)+"</b> · Caso "+esc(S.grupo.caso)+"</p><p>Entrega registrada el "+hora(payload.entregadoEn)+".</p><p class='small'>Copia el comprobante y muéstralo al docente si lo solicita. La calificación se registra durante la defensa oral.</p>";
+    $("cajaFin").innerHTML="<p><b>"+esc(S.nombre)+"</b> · "+esc(S.paralelo)+"</p><p>Caso "+esc(S.casoId)+"</p><p>Entrega registrada el "+new Date(payload.entregadoEn).toLocaleString("es-EC")+".</p><p class='small'>Copia el comprobante y muéstralo al docente si lo solicita. La calificación se registra durante la defensa oral.</p>";
     mostrar("v7");
   }).catch(function(){
     b.disabled=false; b.textContent="Reintentar envío";
-    try{localStorage.setItem(LS+"_pend",JSON.stringify({id:S.grupoId,payload:payload}));}catch(e){}
+    try{localStorage.setItem(LS+"_pend",JSON.stringify({id:slug(S.nombre),payload:payload}));}catch(e){}
     $("avisoEnvio").innerHTML="<div class='aviso malo' style='margin-top:14px'><b>Sin sincronizar.</b> La entrega quedó guardada en este dispositivo. Pulsa Reintentar envío cuando vuelva la red.</div>";
   });
 };
 $("bCopiarFolio").onclick=function(){
-  var t=(S.grupo?("Taller #2 Teoría · Grupo "+S.grupo.nombreGrupo+" · Caso "+S.grupo.caso+" · "+hora(S.grupo.entregadoEn)):"");
+  var t=(S.nombre?"Taller #2 Teoría · "+S.nombre+" · Caso "+S.casoId+" · "+new Date().toLocaleString():"");
   copiar(t,this);
 };
 function copiar(txt,btn){
@@ -839,8 +713,8 @@ function copiar(txt,btn){
 }
 
 function generarPDF(){
-  var r=S.respuestas, c=CASOS.filter(function(x){return x.n===Number(S.grupo.caso);})[0];
-  var contenido="<html><head><meta charset='utf-8'><style>body{font-family:Georgia,'Times New Roman',serif;background:#f7f6f3;color:#1c1c1c;padding:20px}h1{color:#7a1f2b}.entrega{background:#fff;border:1px solid #d9d5cc;border-radius:4px;padding:15px;margin:10px 0}h3{color:#1c1c1c;margin-top:0}.small{color:#5d5a54}.niveles .niv{cursor:default}.total{font-weight:700;margin-top:10px}</style><title>PDF Entrega Taller #2</title></head><body><h1>Taller #2 · Entrega registrada</h1><div class='entrega'><h3>Grupo "+esc(S.grupo.nombreGrupo)+" · "+esc(S.paralelo)+"</h3><p class='small'>Caso "+c.n+" · "+esc(c.t)+"</p><dl class='entrega'><dt>Fase débil</dt><dd><b>"+esc(r.fase)+"</b><br>"+esc(r.justFase)+"</dd><dt>Estilo</dt><dd><b>"+esc(r.modelo)+" — "+esc(r.variante)+"</b><br>"+esc(r.justEstilo)+"</dd><dt>Indicador 1</dt><dd>"+esc(r.ind1.nombre)+" · "+esc(r.ind1.formula)+" · meta "+esc(r.ind1.meta)+" · "+esc(r.ind1.frec)+"</dd><dt>Indicador 2</dt><dd>"+esc(r.ind2.nombre)+" · "+esc(r.ind2.formula)+" · meta "+esc(r.ind2.meta)+" · "+esc(r.ind2.frec)+"</dd><dt>Ticket de salida</dt><dd>"+esc(r.ticket)+"</dd></dl></div></body></html>";
+  var r=S.respuestas, c=CASOS.filter(function(x){return x.n===Number(S.casoId);})[0];
+  var contenido="<html><head><meta charset='utf-8'><style>body{font-family:Georgia,'Times New Roman',serif;background:#f7f6f3;color:#1c1c1c;padding:20px}h1{color:#7a1f2b}.entrega{background:#fff;border:1px solid #d9d5cc;border-radius:4px;padding:15px;margin:10px 0}h3{color:#1c1c1c;margin-top:0}.small{color:#5d5a54}.niveles .niv{cursor:default}.total{font-weight:700;margin-top:10px}</style><title>PDF Entrega Taller #2</title></head><body><h1>Taller #2 · Entrega registrada</h1><div class='entrega'><h3>"+esc(S.nombre)+" · "+esc(S.paralelo)+"</h3><p class='small'>Caso "+c.n+" · "+esc(c.t)+"</p><dl class='entrega'><dt>Fase débil</dt><dd><b>"+esc(r.fase)+"</b><br>"+esc(r.justFase)+"</dd><dt>Estilo</dt><dd><b>"+esc(r.modelo)+" — "+esc(r.variante)+"</b><br>"+esc(r.justEstilo)+"</dd><dt>Indicador 1</dt><dd>"+esc(r.ind1.nombre)+" · "+esc(r.ind1.formula)+" · meta "+esc(r.ind1.meta)+" · "+esc(r.ind1.frec)+"</dd><dt>Indicador 2</dt><dd>"+esc(r.ind2.nombre)+" · "+esc(r.ind2.formula)+" · meta "+esc(r.ind2.meta)+" · "+esc(r.ind2.frec)+"</dd><dt>Ticket de salida</dt><dd>"+esc(r.ticket)+"</dd></dl></div></body></html>";
   var w=window.open("");w.document.write(contenido);w.document.close();w.print();w.close();
 };
 
@@ -869,25 +743,22 @@ function cargarTodo(){
 function pintarTabla(){
   var f=$("filtroParalelo").value, arr=[];
   for(var k in DATA){var g=DATA[k]; if(!g) continue; if(f&&g.paralelo!==f) continue; arr.push({id:k,g:g});}
-  arr.sort(function(a,b){return (a.g.paralelo+((a.g.nombreGrupo)||"")).localeCompare(b.g.paralelo+((b.g.nombreGrupo)||""));});
+  arr.sort(function(a,b){return (a.g.paralelo+((a.g.nombre||"")||"")).localeCompare(b.g.paralelo+((b.g.nombre||"")||""));});
   var t=$("tablaEntregas");
-  t.innerHTML="<tr><th>Paralelo</th><th>Grupo</th><th>Integrantes</th><th>Caso</th><th>Entrega</th><th>Estado</th><th>Nota</th></tr>";
-  if(!arr.length){t.innerHTML+="<tr><td colspan='7'>Sin entregas todavía.</td></tr>";$("txtEstadoTabla").textContent="";return;}
+  t.innerHTML="<tr><th>Estudiante</th><th>Paralelo</th><th>Caso</th><th>Entrega</th><th>Estado</th><th>Nota</th></tr>";
+  if(!arr.length){t.innerHTML+="<tr><td colspan='6'>Sin entregas todavía.</td></tr>";$("txtEstadoTabla").textContent="";return;}
   arr.forEach(function(o){
-    var g=o.g, ints=Object.keys(g.integrantes||{}).map(function(x){return g.integrantes[x];});
+    var g=o.g, nota=g.nota!=null?dos(g.nota):"", estado=g.nota!=null?"<span class='estado list'>Calificado</span>":"<span class='estado pend'>Pendiente</span>";
     var tr=document.createElement("tr"); tr.className="clic";
-    tr.innerHTML="<td>"+esc(g.paralelo)+"</td><td><b>"+esc(g.nombreGrupo||"")+"</b></td>"+
-      "<td>"+esc(ints.join(", "))+"</td><td>"+(g.caso?("Caso "+g.caso):"—")+"</td>"+
-      "<td>"+hora(g.entregadoEn)+"</td>"+
-      "<td>"+(g.nota!=null?"<span class='estado list'>Calificado</span>":"<span class='estado pend'>Pendiente</span>")+"</td>"+
-      "<td class='nota'>"+(g.nota!=null?dos(g.nota):"—")+"</td>";
+    tr.innerHTML="<td>"+esc(g.nombre||"")+"</td><td>"+esc(g.paralelo)+"</td><td>"+(g.caso?("Caso "+g.caso):"—")+"</td><td>"+hora(g.entregadoEn)+"</td>"+
+      "<td>"+estado+"</td><td class='nota'>"+nota+"</td>";
     tr.onclick=function(){abrirDetalle(o.id,g);};
     t.appendChild(tr);
   });
   var cal=arr.filter(function(o){return o.g.nota!=null;}).length;
-  $("txtEstadoTabla").textContent=arr.length+" grupos · "+cal+" calificados · "+intsTotal(arr)+" estudiantes.";
+  $("txtEstadoTabla").textContent=arr.length+" estudiantes · "+cal+" calificados.";
 }
-function intsTotal(arr){var n=0;arr.forEach(function(o){n+=Object.keys(o.g.integrantes||{}).length;});return n;}
+function hora(ts){if(!ts) return "";var d=new Date(ts);return d.toLocaleString("es-EC",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});}
 
 function borrarEntrega(id){
   if(!confirm("¿Seguro que deseas borrar esta entrega? Esta acción no se puede deshacer.")) return;
@@ -898,6 +769,16 @@ function borrarEntrega(id){
     aviso("Error al borrar la entrega. Revisa la conexión e intenta de nuevo.",true);
   });
 }
+$("bBorrar").onclick=function(){
+  var f=$("filtroParalelo").value;
+  var arr=[];
+  for(var k in DATA){var g=DATA[k]; if(!g) continue; if(f&&g.paralelo!==f) continue; arr.push({id:k,g:g});}
+  if(!arr.length){aviso("No hay entregas para borrar con este filtro.",true);return;}
+  var ids=arr.map(function(o){return o.g.nombre||o.id;});
+  if(confirm("Borrarás las siguientes entregas:\n• "+ids.join("\n• ")+"\n\n¿Continuar?")){
+    arr.forEach(function(o){borrarFilaEntrega(o.id);});
+  }
+};
 
 /* ---------- detalle y rúbrica ---------- */
 var ACT=null, GC={}, PREG="";
@@ -954,8 +835,6 @@ function total(){
   $("totalNota").textContent=dos(t);
   return t;
 }
-  return t;
-}
 document.addEventListener("keydown",function(e){
   if($("vd").classList.contains("oculto")) return;
   if(/^[1-4]$/.test(e.key)){
@@ -998,10 +877,10 @@ $("bGuardarNota").onclick=function(){
     observacion:$("obs").value.trim(),preguntaOral:PREG,calificadoEn:Date.now()};
   var b=this; b.disabled=true; b.textContent="Guardando…";
   fbWrite("entregas/"+ACT.id,payload,"PATCH").then(function(){
-    b.disabled=false; b.textContent="Guardar calificación";
+    b.disabled=false; b.textContent="Guardado";
     for(var k in payload) DATA[ACT.id][k]=payload[k];
     pintarTabla();
-    b.textContent="Guardado";
+    b.textContent="Guardar calificación";
     setTimeout(function(){b.textContent="Guardar calificación";},1600);
   }).catch(function(){
     b.disabled=false; b.textContent="Reintentar guardado";
@@ -1014,18 +893,16 @@ $("bExportar").onclick=function(){
   var f=$("filtroParalelo").value, filas=[], detalle=[];
   for(var k in DATA){
     var g=DATA[k]; if(!g) continue; if(f&&g.paralelo!==f) continue;
-    var ints=Object.keys(g.integrantes||{}).map(function(x){return g.integrantes[x];});
-    ints.forEach(function(n){
-      filas.push([n,"",g.nota!=null?dos(g.nota):"",
-        g.c1!=null?dos(g.c1):"",g.c2!=null?dos(g.c2):"",g.c3!=null?dos(g.c3):"",g.c4!=null?dos(g.c4):"",
-        [g.evidencia&&g.evidencia.f1?"fases":"",g.evidencia&&g.evidencia.f2?"hechos":"",g.evidencia&&g.evidencia.f3?"meta":""].filter(Boolean).join(" / "),
-        (g.observacion||"")+(g.preguntaOral?" | Oral: "+g.preguntaOral:"")]);
-      detalle.push([n,g.nombreGrupo||"",g.caso||"",g.paralelo||"",
-        g.c1!=null?dos(g.c1)+" "+CRIT[0].d[NIV.indexOf(g.c1)]:"",
-        g.c2!=null?dos(g.c2)+" "+CRIT[1].d[NIV.indexOf(g.c2)]:"",
-        g.c3!=null?dos(g.c3)+" "+CRIT[2].d[NIV.indexOf(g.c3)]:"",
-        g.c4!=null?dos(g.c4)+" "+CRIT[3].d[NIV.indexOf(g.c4)]:""]);
-    });
+    var n=g.nombre||"";
+    filas.push([n,"",g.nota!=null?dos(g.nota):"",
+      g.c1!=null?dos(g.c1):"",g.c2!=null?dos(g.c2):"",g.c3!=null?dos(g.c3):"",g.c4!=null?dos(g.c4):"",
+      [g.evidencia&&g.evidencia.f1?"fases":"",g.evidencia&&g.evidencia.f2?"hechos":"",g.evidencia&&g.evidencia.f3?"meta":""].filter(Boolean).join(" / "),
+      (g.observacion||"")+(g.preguntaOral?" | Oral: "+g.preguntaOral:"")]);
+    detalle.push([n,g.nombreGrupo||"",g.caso||"",g.paralelo||"",
+      g.c1!=null?dos(g.c1)+" "+CRIT[0].d[NIV.indexOf(g.c1)]:"",
+      g.c2!=null?dos(g.c2)+" "+CRIT[1].d[NIV.indexOf(g.c2)]:"",
+      g.c3!=null?dos(g.c3)+" "+CRIT[2].d[NIV.indexOf(g.c3)]:"",
+      g.c4!=null?dos(g.c4)+" "+CRIT[3].d[NIV.indexOf(g.c4)]:""]);
   }
   if(!filas.length){$("txtEstadoTabla").textContent="No hay entregas para exportar en este filtro.";return;}
   var h1="<table border='1'><tr><th>NOMBRES</th><th>APELLIDOS</th><th>NOTA</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>EVIDENCIA</th><th>OBSERVACIONES</th></tr>";
@@ -1043,128 +920,13 @@ $("bExportar").onclick=function(){
 };
 $("bImprimir").onclick=function(){window.print();};
 
-function borrarFilaEntrega(id){
-  if(!confirm("¿Seguro que deseas borrar esta entrega? Esta acción no se puede deshacer.")) return;
-  fbWrite("entregas/"+id,null,"DELETE").then(function(){
-    aviso("Entrega borrada correctamente.",false);
-    cargarTodo();
-  }).catch(function(){
-    aviso("Error al borrar la entrega. Revisa la conexión e intenta de nuevo.",true);
-  });
-};
-
-$("bBorrar").onclick=function(){
-  var f=$("filtroParalelo").value;
-  var arr=[];
-  for(var k in DATA){var g=DATA[k]; if(!g) continue; if(f&&g.paralelo!==f) continue; arr.push({id:k,g:g});}
-  if(!arr.length){aviso("No hay entregas para borrar con este filtro.",true);return;}
-  var ids=arr.map(function(o){return o.g.nombreGrupo||o.id;});
-  if(confirm("Borrarás las siguientes entregas:\n• "+ids.join("\n• ")+"\n\n¿Continuar?")){
-    arr.forEach(function(o){borrarFilaEntrega(o.id);});
-  }
-};
-/* ---------- pestañas del panel ---------- */
-document.querySelectorAll("[data-tab]").forEach(function(p){
-  p.onclick=function(){
-    document.querySelectorAll("[data-tab]").forEach(function(x){x.classList.remove("on");});
-    p.classList.add("on");
-    var t=p.getAttribute("data-tab");
-    $("tabEntregas").classList.toggle("oculto",t!=="entregas");
-    $("tabProy").classList.toggle("oculto",t!=="proy");
-    if(t==="proy") pintarProyeccion();
-  };
-});
-
-/* ---------- proyección y cronómetro ---------- */
-function pintarProyeccion(){
-  var s=$("proyCaso");
-  if(!s.options.length){
-    s.innerHTML=CASOS.map(function(c){return "<option value='"+c.n+"'>Caso "+c.n+" · "+esc(c.t)+"</option>";}).join("");
-    s.onchange=function(){mostrarCasoProy();};
-  }
-  mostrarCasoProy();
-}
-function mostrarCasoProy(){
-  var n=Number($("proyCaso").value||1), c=CASOS.filter(function(x){return x.n===n;})[0];
-  $("proyTitulo").textContent="Caso "+c.n+" · "+c.t;
-  $("proyTexto").textContent=c.x;
-  $("proyTexto").style.fontSize="24px";
-}
-var FASE=0, DUR=[8*60,4*60], T=0, fin=0, tick=null, pausado=false, restante=DUR[0], modoDuracion="8min";
-function pintarTimer(){
-  var m=Math.floor(restante/60), s=restante%60;
-  var el=$("proyTimer");
-  el.textContent=("0"+m).slice(-2)+":"+("0"+s).slice(-2);
-  el.classList.toggle("alerta",restante<=120);
-  $("proyFase").textContent="Fase "+(FASE+1)+" de 2 · "+(FASE===0?"Trabajo en grupo":"Defensa oral");
-}
-function pintarModoDuracion(){
-  var sel=$("proyDuracion").value;
-  modoDuracion=sel;
-  if(sel==="off"){
-    clearInterval(tick); tick=null; pausado=true;
-    $("bIniciar").textContent="Detener";
-    $("bPausar").textContent="Iniciar";
-    $("proyTimer").textContent="--:--";
-  }else{
-    var seg=parseInt(sel);
-    if(isNaN(seg)) seg=60;
-    var min=Math.floor(seg/60), s=seg%60;
-    restante=seg*1000;
-    fin=Date.now()+restante;
-    pintarTimer();
-    $("bIniciar").textContent="Iniciar";
-  }
-}
-function correr(){
-  clearInterval(tick);
-  tick=setInterval(function(){
-    if(pausado) return;
-    restante=Math.max(0,Math.round((fin-Date.now())/1000));
-    pintarTimer();
-    if(restante===120) pitido(2);
-    if(restante===0){clearInterval(tick);pitido(3);}
-  },250);
-}
-function pitido(n){
-  try{
-    var ctx=new (window.AudioContext||window.webkitAudioContext)();
-    for(var i=0;i<n;i++){
-      (function(i){
-        setTimeout(function(){
-          var o=ctx.createOscillator(), g=ctx.createGain();
-          o.frequency.value=660; o.connect(g); g.connect(ctx.destination);
-          g.gain.setValueAtTime(.16,ctx.currentTime);
-          o.start(); o.stop(ctx.currentTime+.18);
-        },i*320);
-      })(i);
-    }
-  }catch(e){}
-}
-$("bIniciar").onclick=function(){
-  var sel=$("proyDuracion").value;
-  if(sel==="off"){
-    clearInterval(tick); tick=null; pausado=true;
-    $("proyTimer").textContent="--:--";
-    $("bIniciar").textContent="Detener";
-    return;
-  }
-  pausado=false;fin=Date.now()+parseInt(sel)*1000;correr();
-};
-$("bPausar").onclick=function(){pausado=!pausado;this.textContent=pausado?"Reanudar":"Pausa";if(!pausado){fin=Date.now()+restante*1000;correr();}};
-$("bSiguiente").onclick=function(){FASE=FASE===0?1:0;restante=DUR[FASE]*1000;pausado=false;$("bPausar").textContent="Pausa";pintarTimer();};
-$("bReset").onclick=function(){clearInterval(tick);FASE=0;restante=DUR[0]*1000;pausado=false;$("bPausar").textContent="Pausa";pintarTimer();pintarModoDuracion();};
-pintarTimer();
-pintarModoDuracion();
-
 /* ---------- arranque ---------- */
 leerLocal();
 if(location.search.indexOf("docente")>-1){mostrar("vp");}
 red(navigator.onLine,"Conectado");
 window.addEventListener("offline",function(){red(false,"Sin conexión");});
-window.addEventListener("online",function(){red(true,"Conectado");});
+window.addEventListener("online",function(){red(true,"Conectado");}
 })();
-
 </script>
 </body>
 </html>
